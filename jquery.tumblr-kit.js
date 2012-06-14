@@ -1,6 +1,8 @@
 /*
- * Tumblr Kit 0.9
- * Initial Public Release
+ * Tumblr Kit 0.9 (Initial Public Release)
+ *
+ * A jQuery plugin for importing post data from Tumblr’s API.
+ * http://github.com/matthewbuchanan/tumblr-kit/
  *
  * Copyright (c) 2012 by Matthew Buchanan
  * http://matthewbuchanan.name
