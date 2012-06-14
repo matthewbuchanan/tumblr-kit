@@ -52,29 +52,29 @@ JsRender provides a mechanism for registering helper functions to assist with th
 	</thead>
 	<tbody>
 		<tr>
-			<td>`getHostname()`</td>
+			<td><code>getHostname()</code></td>
 			<td></td>
     	<td>Returns the blog hostname as declared in the TUMBLR_HOSTNAME global variable.</td>
 		</tr>
 		<tr>
-			<td>`getTintedAudioPlayer(view[, color])`</td>
+			<td><code>getTintedAudioPlayer(view[, color])</code></td>
 			<td>audio</td>
     	<td>Returns the embed code for the Flash audio player, optionally tinted with the specified hex `color` value.</td>
 		</tr>
 		<tr>
-			<td>`getPhotoURL(view, size)`</td>
+			<td><code>getPhotoURL(view, size)</code></td>
 			<td>photo</td>
     	<td>Returns the best image URL from available photo sizes based on the specified `size` parameter.</td>
 		</tr>
 		<tr>
-			<td>`getPhotoOrientation(view)`</td>
+			<td><code>getPhotoOrientation(view)</code></td>
 			<td>photo</td>
-    	<td>Returns the image’s aspect ratio as `"portrait"`, `"landscape"` or `"square"`.</td>
+    	<td>Returns the image’s aspect ratio as <code>"portrait"</code>, <code>"landscape"</code> or <code>"square"</code>.</td>
 		</tr>
 		<tr>
-			<td>`getVideoEmbed(view, size)`</td>
+			<td><code>getVideoEmbed(view, size)</code></td>
 			<td>video</td>
-    	<td>Returns the best embed code from available video sizes based on the specified `size` parameter.</td>
+    	<td>Returns the best embed code from available video sizes based on the specified <code>size</code> parameter.</td>
 		</tr>
 	</tbody>
 </table>
@@ -104,70 +104,70 @@ The `getTumblrPosts()` function supports these options:
 	</thead>
 	<tbody>
 		<tr>
-			<td>`hostname`</td>
+			<td><code>hostname</code></td>
 			<td>string</td>
 			<td>TUMBLR_HOSTNAME</td>
     	<td>Eg. matthewb.tumblr.com, matthewbuchanan.name</td>
 		</tr>
 		<tr>
-			<td>`id`</td>
+			<td><code>id</code></td>
 			<td>integer</td>
 			<td>null</td>
     	<td>The ID of a particular Tumblr post</td>
 		</tr>
 		<tr>
-			<td>`type`</td>
+			<td><code>type</code></td>
 			<td>string</td>
 			<td>""</td>
     	<td>answer, audio, chat, link, photo, quote, text, video</td>
 		</tr>
 		<tr>
-			<td>`tag`</td>
+			<td><code>tag</code></td>
 			<td>string</td>
 			<td>""</td>
     	<td>Eg. sports, tech, design</td>
 		</tr>
 		<tr>
-			<td>`limit`</td>
+			<td><code>limit</code></td>
 			<td>integer</td>
 			<td>20</td>
     	<td>The number of posts to load (1 – 20)</td>
 		</tr>
 		<tr>
-			<td>`offset`</td>
+			<td><code>offset</code></td>
 			<td>integer</td>
 			<td>0</td>
     	<td>The starting index of the first post, useful for implementing pagination.</td>
 		</tr>
 		<tr>
-			<td>`format`</td>
+			<td><code>format</code></td>
 			<td>string</td>
 			<td>""</td>
     	<td>Empty string (for HTML), text, raw</td>
 		</tr>
 		<tr>
-			<td>`template`</td>
+			<td><code>template</code></td>
 			<td>string</td>
 			<td>""</td>
     	<td>The ID of the JsRender template to use</td>
 		</tr>
 		<tr>
-			<td>`success`</td>
+			<td><code>success</code></td>
 			<td>function</td>
 			<td>null</td>
     	<td>Function to run upon successful data retrieval</td>
 		</tr>
 		<tr>
-			<td>`error`</td>
+			<td><code>error</code></td>
 			<td>function</td>
 			<td>null</td>
     	<td>Function to run upon unsuccessful data retrieval</td>
 		</tr>
 		<tr>
-			<td>`complete`</td>
+			<td><code>complete</code></td>
 			<td>function</td>
 			<td>null</td>
-    	<td>Function to run following execution of `success` and `error` callbacks</td>
+    	<td>Function to run following execution of <code>success</code> and <code>error</code> callbacks</td>
 		</tr>
 	</tbody>
 </table>
@@ -176,7 +176,7 @@ The `success`, `error`	 and `complete` functions are modelled on those defined i
 
 ### Version history
 
-*0.9* Initial public release.
+**0.9** Initial public release.
 
 ### License
 
