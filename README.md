@@ -3,11 +3,11 @@ Tumblr Kit
 
 A jQuery framework for ajax loading post content via Tumblr’s v2 API and rendering it in your document using customisable JsRender templates.
 
-### Dependencies
+## Dependencies
 
 Tumblr Kit requires [jQuery 1.4+](http://jquery.com) and [JsRender 1.0pre+](http://github.com/borismoore/jsrender/).
 
-### Setup
+## Setup
 
 Include the dependent frameworks listed above:
 
@@ -25,7 +25,7 @@ Replace the values above with your own details. If you’re including Tumblr Kit
 
 	var TUMBLR_HOSTNAME = "{Host}";
 
-### Post templates
+## Post templates
 
 Tumblr Kit uses [JsRender](http://github.com/borismoore/jsrender) templates to define the markup for each imported post. JsRender supercedes the now-deprecated [jQuery Templates](http://api.jquery.com/jQuery.template/) plugin. Boris Moore provides basic [demos and documentation](http://borismoore.github.com/jsrender/demos/) for JsRender, and I’ve put together a [sample template](http://github.com/matthewbuchanan/tumblr-kit/blob/master/sample-jsrender-templates.md) for each post type as part of this repository.
 
@@ -40,12 +40,14 @@ Include a JsRender template in your HTML page for each post type you intend to i
 
 Tumblr’s [API documentation](http://www.tumblr.com/docs/en/api/v2#text-posts) provides a JSON schema for each post type that will help you to define your templates.
 
+### JsRender Helpers
+
 JsRender provides a mechanism for registering helper functions to assist with the processing of data within templates. The following helpers are included with Tumblr Kit:
 
 <table>
 	<thead>
 		<tr>
-			<th>Helper method</th>
+			<th>Helper function</th>
 			<th>Post&nbsp;type</th>
 			<th>Description</th>
 		</tr>
@@ -79,9 +81,9 @@ JsRender provides a mechanism for registering helper functions to assist with th
 	</tbody>
 </table>
 
-*Pass `#view` to the above helper methods where specified to set the current context for the function.
+*Pass `#view` to the above helpers (where required) to set the current context for the function.
 
-### Sample usage
+## Usage
 
 With your globals and templates declared, importing post data is easy. Tumblr Kit provides a single function to import posts, `getTumblrPosts()`, which is called on a jQuery selector, like this:
 
@@ -107,7 +109,7 @@ The `getTumblrPosts()` function supports these options:
 			<td><code>hostname</code></td>
 			<td>string</td>
 			<td>TUMBLR_HOSTNAME</td>
-    	<td>Eg. matthewb.tumblr.com, matthewbuchanan.name</td>
+    	<td>Eg. "matthewb.tumblr.com", "matthewbuchanan.name"</td>
 		</tr>
 		<tr>
 			<td><code>id</code></td>
@@ -119,13 +121,13 @@ The `getTumblrPosts()` function supports these options:
 			<td><code>type</code></td>
 			<td>string</td>
 			<td></td>
-    	<td>answer, audio, chat, link, photo, quote, text, video</td>
+    	<td>"answer", "audio", "chat", "link", "photo", "quote", "text" or "video"</td>
 		</tr>
 		<tr>
 			<td><code>tag</code></td>
 			<td>string</td>
 			<td></td>
-    	<td>Eg. sports, tech, design</td>
+    	<td>Eg. "sports", "tech" or "design"</td>
 		</tr>
 		<tr>
 			<td><code>limit</code></td>
@@ -143,13 +145,13 @@ The `getTumblrPosts()` function supports these options:
 			<td><code>format</code></td>
 			<td>string</td>
 			<td></td>
-    	<td>Empty string (for HTML), text, raw</td>
+    	<td>Empty string (for HTML), "text" or "raw"</td>
 		</tr>
 		<tr>
 			<td><code>template</code></td>
 			<td>string</td>
 			<td></td>
-    	<td>The ID of the JsRender template to use</td>
+    	<td>The ID of the JsRender template to use, eg. "#myTemplate"</td>
 		</tr>
 		<tr>
 			<td><code>success</code></td>
@@ -174,10 +176,10 @@ The `getTumblrPosts()` function supports these options:
 
 The `success`, `error`	 and `complete` functions are modelled on those defined in jQuery’s [`$.ajax()` function](http://api.jquery.com/jQuery.ajax/), and implement the same arguments in each case.
 
-### Version history
+## Version history
 
 **0.9** Initial public release.
 
-### License
+## License
 
 The Tumblr Kit source is copyright © 2012 by [Matthew Buchanan](http://matthewbuchanan.name) and released under the [WTFPL license](http://sam.zoy.org/wtfpl/).
