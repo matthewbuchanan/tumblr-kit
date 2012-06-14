@@ -1,3 +1,15 @@
+/*
+ * Tumblr Kit 0.9
+ * Initial Public Release
+ *
+ * Copyright (c) 2012 by Matthew Buchanan
+ * http://matthewbuchanan.name
+ *
+ * Released under the WTFPL license
+ * http://sam.zoy.org/wtfpl/
+ *
+ * First released June 15, 2012
+ */
 ;(function ( $, window, undefined ) {
 
 	$.fn.getTumblrPosts = function(options) {
