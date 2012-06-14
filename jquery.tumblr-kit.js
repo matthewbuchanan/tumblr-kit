@@ -39,8 +39,7 @@
 				// Returns the best image URL from available photo sizes based on the specified
 				// "size" parameter. For non-native sizes, returns the next largest size (if available).
 				var images = view.data.alt_sizes,
-					src = "",
-					i = 0;
+					src = "";
 				for (var i = 0; i < images.length; i++) {
 					if (images[i].width >= size) src = images[i].url; else break;
 				}
@@ -63,8 +62,7 @@
 				// Returns the best embed code from available video sizes based on the specified
 				// "size" parameter. For non-native sizes, returns the next smallest size.
 				var players = view.data.player,
-					embed = "",
-					i = 0;
+					embed = "";
 				for (var i = 0; i < players.length; i++) {
 					if (players[i].width <= size) embed = players[i].embed_code; else break;
 				}
