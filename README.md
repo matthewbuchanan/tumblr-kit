@@ -118,13 +118,13 @@ The `getTumblrPosts()` function supports these options:
 		<tr>
 			<td><code>type</code></td>
 			<td>string</td>
-			<td>""</td>
+			<td></td>
     	<td>answer, audio, chat, link, photo, quote, text, video</td>
 		</tr>
 		<tr>
 			<td><code>tag</code></td>
 			<td>string</td>
-			<td>""</td>
+			<td></td>
     	<td>Eg. sports, tech, design</td>
 		</tr>
 		<tr>
@@ -137,18 +137,18 @@ The `getTumblrPosts()` function supports these options:
 			<td><code>offset</code></td>
 			<td>integer</td>
 			<td>0</td>
-    	<td>The starting index of the first post, useful for implementing pagination.</td>
+    	<td>The starting index of the first post, useful for implementing pagination</td>
 		</tr>
 		<tr>
 			<td><code>format</code></td>
 			<td>string</td>
-			<td>""</td>
+			<td></td>
     	<td>Empty string (for HTML), text, raw</td>
 		</tr>
 		<tr>
 			<td><code>template</code></td>
 			<td>string</td>
-			<td>""</td>
+			<td></td>
     	<td>The ID of the JsRender template to use</td>
 		</tr>
 		<tr>
