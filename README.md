@@ -27,7 +27,7 @@ Replace the values above with your own details. If you’re including Tumblr Kit
 
 ### Post templates
 
-Tumblr Kit uses [JsRender](http://github.com/borismoore/jsrender) templates to define the markup for each imported post. JsRender supercedes the now-deprecated [jQuery Templates](http://api.jquery.com/jQuery.template/) plugin. Boris Moore provides basic [demos and documentation](http://borismoore.github.com/jsrender/demos/) for JsRender, and I’ve put together a [sample template](#) for each post type as part of this repository.
+Tumblr Kit uses [JsRender](http://github.com/borismoore/jsrender) templates to define the markup for each imported post. JsRender supercedes the now-deprecated [jQuery Templates](http://api.jquery.com/jQuery.template/) plugin. Boris Moore provides basic [demos and documentation](http://borismoore.github.com/jsrender/demos/) for JsRender, and I’ve put together a [sample template](http://github.com/matthewbuchanan/tumblr-kit/blob/master/sample-jsrender-templates.md) for each post type as part of this repository.
 
 Include a JsRender template in your HTML page for each post type you intend to import. For example, the template for a text post might look like this:
 
@@ -46,7 +46,7 @@ JsRender provides a mechanism for registering helper functions to assist with th
 	<thead>
 		<tr>
 			<th>Helper method</th>
-			<th>Post type</th>
+			<th>Post&nbsp;type</th>
 			<th>Description</th>
 		</tr>
 	</thead>

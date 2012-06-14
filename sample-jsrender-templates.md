@@ -1,13 +1,22 @@
 Sample JsRender Templates
 =========================
 
-The sample templates in this file use Boris Moore’s JsRender templating syntax. See the [demos and documentation](http://borismoore.github.com/jsrender/demos/) for more information.
+The sample templates in this file use Boris Moore’s JsRender templating syntax (see the [demos and documentation](http://borismoore.github.com/jsrender/demos/) for more information).
+
+These templates should be treated as a starting point only. Modify them to match the markup in your theme, and refer to Tumblr’s [API documentation](http://www.tumblr.com/docs/en/api/v2#text-posts) for details of the exposed object hierarchy for each post type.
 
 ### Audio post
 
 	<script id="tmpl-audio" type="text/x-jsrender">
 		<article id="post-{{:id}}" class="post-{{:type}}">
-			{{if track_name || artist || album}}<h1>{{:track_name}}{{if artist}} by {{:artist}}{{/if}}{{if album}} from ‘{{:album}}’ {{if year}}({{:year}}){{/if}}{{/if}}</h1>{{/if}}
+			{{if track_name || artist || album}}
+				<h1>{{:track_name}}
+					{{if artist}} by {{:artist}}{{/if}}
+					{{if album}} from ‘{{:album}}’
+						{{if year}}({{:year}}){{/if}}
+					{{/if}}
+				</h1>
+			{{/if}}
 			{{:~getTintedAudioPlayer(#view, "#DDDDDD")}}
 			{{if plays}}<p>{{:plays}} plays</p>{{/if}}
 			{{:source}}
