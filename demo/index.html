@@ -1,0 +1,242 @@
+<!doctype html>
+
+<html>
+
+	<head>
+
+		<meta charset="utf-8">
+
+		<!-- Dependencies, host these yourself to avoid possible incompatibilities -->
+		<script src="http://code.jquery.com/jquery.min.js"></script>
+		<script src="http://dl.dropbox.com/u/25640/tumblr/js/jsrender.js"></script>
+		<script src="http://github.com/matthewbuchanan/tumblr-kit/raw/master/jquery.tumblr-kit.js"></script>
+
+		<!-- Additional plugins used in this demo -->
+		<script src="http://dl.dropbox.com/u/25640/tumblr/js/jquery.cycle.lite.js"></script>
+		<script src="http://dl.dropbox.com/u/25640/tumblr/js/jquery.imagesloaded.min.js"></script>
+
+		<script>
+
+			// PLEASE REGISTER YOUR OWN TUMBLR OAUTH CONSUMER (API) KEY
+			// http://www.tumblr.com/oauth/apps
+
+			var TUMBLR_API_KEY = "U41QnbLmjhiKfief3Cd5jZ6fO4ciHwWbrYSCwthlm79rZ0e6aR";
+			var TUMBLR_HOSTNAME = "matthewbuchanan.name";
+			
+			// On DOM Ready, perform these actions
+			$(function() {
+
+				function cyclePhotosets() {
+					// Cycle images in photosets
+					$(".photoset:not(.processed)").each(function() {
+						var me = $(this);
+						me.cycle();
+						me.imagesLoaded(function() {
+							me.height(me.find("img").first().height());
+						});
+						me.addClass("processed");
+					});
+				}
+
+				// Example Tumblr Kit usage
+
+				$("#all").getTumblrPosts({
+					limit: 10,
+					success: cyclePhotosets
+				});
+
+				$("#audio").getTumblrPosts({
+					type: "audio",
+					limit: 1
+				});
+
+				$("#chats").getTumblrPosts({
+					type: "chat",
+					limit: 2
+				});
+
+				$("#links").getTumblrPosts({
+					type: "link",
+					limit: 3
+				});
+
+				$("#photos").getTumblrPosts({
+					type: "photo",
+					limit: 3,
+					template: "#tmpl-photo",
+					complete: cyclePhotosets
+				});
+
+				$("#quotes").getTumblrPosts({
+					type: "quote",
+					limit: 1,
+					offset: 20
+				});
+
+				$("#text").getTumblrPosts({
+					type: "text",
+					limit: 1
+				});
+
+				$("#videos").getTumblrPosts({
+					type: "video",
+					limit: 3
+				});
+
+			});
+
+		</script>
+
+		<style>
+			body { font-family: sans-serif; padding: 0 20px; margin: 0; }
+			h1 { margin-top: 1em; }
+			article { margin-bottom: 2em; }
+			p { line-height: 1.5; }
+			p, iframe, embed { margin-bottom: 1em; }
+			a { color: #09C; }
+			.photoset { margin-top: 0; overflow: hidden; }
+			.photoset li { list-style: none; }
+			.chat li { margin-bottom: 0.5em; line-height: 1.33; }
+			.tags { padding-left: 0; margin-top: -0.75em; }
+			.tags li { display: inline; font-size: smaller; }
+		</style>
+
+	</head>
+
+	<body>
+
+		<!-- JsRender templates for each post type -->
+
+		<script id="tmpl-audio" type="text/x-jsrender">
+			<article id="post-{{:id}}" class="post-{{:type}}">
+				{{if track_name || artist || album}}
+					<h1>
+						{{:track_name}}
+						{{if artist}} by {{:artist}}{{/if}}
+						{{if album}} from ‘{{:album}}’
+							{{if year}}({{:year}}){{/if}}
+						{{/if}}
+					</h1>
+				{{/if}}
+
+				{{:~getTintedAudioPlayer(#view, "#DDDDDD")}}
+
+				{{if plays}}<p>{{:plays}} plays</p>{{/if}}
+
+				{{:source}}
+
+				{{for #data tmpl="#tmpl-metadata"/}}
+			</article>
+		</script>
+
+		<script id="tmpl-chat" type="text/x-jsrender">
+			<article id="post-{{:id}}" class="post-{{:type}}">
+				<h1>{{:title}}</h1>
+
+				{{if dialogue}}
+					<ul class="chat">
+						{{for dialogue}}<li><strong>{{:label}}</strong> {{:phrase}}</li>{{/for}}
+					</ul>
+				{{/if}}
+
+				{{for #data tmpl="#tmpl-metadata"/}}
+			</article>
+		</script>
+
+		<script id="tmpl-link" type="text/x-jsrender">
+			<article id="post-{{:id}}" class="post-{{:type}}">
+				<h1><a href="{{:url}}">{{:title}}</a></h1>
+
+				{{:description}}
+
+				{{for #data tmpl="#tmpl-metadata"/}}
+			</article>
+		</script>
+
+		<script id="tmpl-photo" type="text/x-jsrender">
+			<article id="post-{{:id}}" class="post-{{:type}}">
+				{{if photoset_layout}}
+					<ul class="photoset">
+						{{for photos}}<li><img src="{{:~getPhotoURL(#view, 500)}}" /></li>{{/for}}
+					</ul>
+				{{else}}
+					<img src="{{for photos}}{{:~getPhotoURL(#view, 500)}}{{/for}}" />
+				{{/if}}
+
+				{{:caption}}
+
+				{{for #data tmpl="#tmpl-metadata"/}}
+			</article>
+		</script>
+
+		<script id="tmpl-quote" type="text/x-jsrender">
+			<article id="post-{{:id}}" class="post-{{:type}}">
+				<h1>{{:text}}</h1>
+
+				{{:source}}
+
+				{{for #data tmpl="#tmpl-metadata"/}}
+			</article>
+		</script>
+
+		<script id="tmpl-text" type="text/x-jsrender">
+			<article id="post-{{:id}}" class="post-{{:type}}">
+				<h1>{{:title}}</h1>
+
+				{{:body}}
+
+				{{for #data tmpl="#tmpl-metadata"/}}
+			</article>
+		</script>
+
+		<script id="tmpl-video" type="text/x-jsrender">
+			<article id="post-{{:id}}" class="post-{{:type}}">
+				{{:~getVideoEmbed(#view, 500)}}
+
+				{{:caption}}
+
+				{{for #data tmpl="#tmpl-metadata"/}}
+			</article>
+		</script>
+
+		<!-- Additional Metadata / Tag templates to avoid repetition of code -->
+
+		<script id="tmpl-metadata" type="text/x-jsrender">
+			{{if note_count > 0}}<p><small><a href="{{:post_url}}#notes">{{:note_count}} notes</a></small></p>{{/if}}
+		
+			{{if tags}}<ul class="tags">{{for tags tmpl="#tmpl-tag"/}}</ul>{{/if}}
+		</script>
+
+		<script id="tmpl-tag" type="text/x-jsrender">
+			<li><a href="http://{{:~getHostname()}}/tagged/{{:#data}}">{{:#data}}</a></li>
+		</script>
+
+		<!-- Container elements to render posts into -->
+
+		<h1>All post types</h1>
+		<div id="all">Loading posts&hellip;</div>
+
+		<h1>Audio</h1>
+		<div id="audio">Loading posts&hellip;</div>
+
+		<h1>Chats</h1>
+		<div id="chats">Loading posts&hellip;</div>
+
+		<h1>Links</h1>
+		<div id="links">Loading posts&hellip;</div>
+
+		<h1>Photos</h1>
+		<div id="photos">Loading posts&hellip;</div>
+
+		<h1>Quotes</h1>
+		<div id="quotes">Loading posts&hellip;</div>
+
+		<h1>Text</h1>
+		<div id="text">Loading posts&hellip;</div>
+
+		<h1>Videos</h1>
+		<div id="videos">Loading posts&hellip;</div>
+
+	</body>
+
+</html>
