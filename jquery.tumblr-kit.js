@@ -111,9 +111,9 @@
 				url: uri,
 				dataType: "jsonp",
 				jsonp: "jsonp",
-				beforeSend: function(jqXHR, settings) {
+				beforeSend: function() {
 					// Run beforeSend function if set
-					if (typeof settings.beforeSend === "function") settings.beforeSend(jqXHR, settings);
+					if (typeof settings.beforeSend === "function") settings.beforeSend();
 				},
 				success: function(data, textStatus, jqXHR) {
 					// Process each returned post
