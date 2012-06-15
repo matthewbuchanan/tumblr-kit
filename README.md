@@ -102,7 +102,7 @@ If you include an element inside your container with a class of `tumblr-api-load
 
 ### Options
 
-The `getTumblrPosts()` function supports these options:
+The `getTumblrPosts()` function takes several settings parameters (all optional).
 
 <table>
 	<thead>
