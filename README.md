@@ -189,7 +189,7 @@ The `getTumblrPosts()` function supports these options:
 	</tbody>
 </table>
 
-The `success`, `error`	 and `complete` functions are modelled on those defined in jQuery’s [`$.ajax()` function](http://api.jquery.com/jQuery.ajax/), and implement the same arguments in each case.
+Use `this` in your callbacks to refer to the container element(s) defined in the jQuery selector used with `.getTumblrPosts()`. The `success`, `error`	 and `complete` callbacks are modelled on those defined in jQuery’s [`$.ajax()` function](http://api.jquery.com/jQuery.ajax/), and implement the same arguments in each case.
 
 ## Version history
 
