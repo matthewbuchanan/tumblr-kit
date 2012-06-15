@@ -163,6 +163,12 @@ The `getTumblrPosts()` function supports these options:
     	<td>The ID of the JsRender template to use, eg. "#myTemplate"</td>
 		</tr>
 		<tr>
+			<td><code>before</code></td>
+			<td>function</td>
+			<td>null</td>
+    	<td>Function to run prior to data retrieval</td>
+		</tr>
+		<tr>
 			<td><code>success</code></td>
 			<td>function</td>
 			<td>null</td>
@@ -187,8 +193,11 @@ The `success`, `error`	 and `complete` functions are modelled on those defined i
 
 ## Version history
 
+**0.9.2**
+- Correctly pass the context for `this` to callback functions.
+
 **0.9.1**
-- Added support for `beforeSend()` callback.
+- Added support for `before()` callback.
 - Changed approach to hiding the loading message, now requires a class of `.tumblr-api-loading`.
 
 **0.9**
