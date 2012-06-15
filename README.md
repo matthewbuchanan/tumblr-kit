@@ -21,8 +21,15 @@ Declare global variables for your Tumblr OAuth Consumer Key ([register one here]
 		var TUMBLR_HOSTNAME = "matthewb.tumblr.com";
 	</script>
 
-Replace the values above with your own details. If you’re including Tumblr Kit in a public theme, it’s probably okay to register an API key as the theme author and distribute that in the source. Alternatively, provide a [custom text](http://www.tumblr.com/docs/en/custom_themes#appearance-options) tag for the Consumer Key and output the blog’s hostname using the undocumented `{Host}` tag:
+Replace the values above with your own details.
 
+### Use in public themes
+
+If you’re including Tumblr Kit in a public theme, you’ll need to have your users generate their own key, which isn’t ideal. I believe Tumblr is looking at a solution to make this easier for theme authors, but for now you’ll need to provide a [custom text](http://www.tumblr.com/docs/en/custom_themes#appearance-options) tag for the Consumer Key and output the blog’s hostname using the undocumented `{Host}` tag:
+
+	<meta name="text:Tumblr OAuth Consumer Key" content=""/>
+
+	var TUMBLR_API_KEY = "{text:Tumblr OAuth Consumer Key}";
 	var TUMBLR_HOSTNAME = "{Host}";
 
 ## Post templates
@@ -90,6 +97,8 @@ With your globals and templates declared, importing post data is easy. Tumblr Ki
 	$("#posts").getTumblrPosts();
 
 By default, this loads the 20 most recent posts from the target blog and renders them inside the `#posts` element using the JsRender templates defined in your page. When no template ID is specified in the options, the default template naming scheme is expected: `#tmpl-audio`, `#tmpl-chat`, etc.
+
+If you include an element inside your container with a class of `tumblr-api-loading` it will be hidden on completion of the ajax load.
 
 ### Options
 
@@ -178,7 +187,12 @@ The `success`, `error`	 and `complete` functions are modelled on those defined i
 
 ## Version history
 
-**0.9** Initial public release.
+**0.9.1**
+- Added support for `beforeSend()` callback.
+- Changed approach to hiding the loading message, now requires a class of `.tumblr-api-loading`.
+
+**0.9**
+- Initial public release.
 
 ## License
 

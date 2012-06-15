@@ -1,5 +1,5 @@
 /*
- * Tumblr Kit 0.9 (Initial Public Release)
+ * Tumblr Kit 0.9.1 (Initial Public Release)
  *
  * A jQuery plugin for importing post data from Tumblr’s API.
  * http://github.com/matthewbuchanan/tumblr-kit/
@@ -10,7 +10,7 @@
  * Released under the WTFPL license
  * http://sam.zoy.org/wtfpl/
  *
- * First released June 15, 2012
+ * First released June 14, 2012
  */
 ;(function ( $, window, undefined ) {
 
@@ -80,6 +80,7 @@
 			"offset": 0, // 0 or integer
 			"format": "", // none (for html), text, raw
 			"template": "", // ID of JsRender template
+			"beforeSend": null,
 			"success": null,
 			"error": null,
 			"complete": null
@@ -110,10 +111,11 @@
 				url: uri,
 				dataType: "jsonp",
 				jsonp: "jsonp",
+				beforeSend: function(jqXHR, settings) {
+					// Run beforeSend function if set
+					if (typeof settings.beforeSend === "function") settings.beforeSend(jqXHR, settings);
+				},
 				success: function(data, textStatus, jqXHR) {
-					// Hide ‘loading’ messages included in markup, if any
-					target.html("");
-
 					// Process each returned post
 					$.each(data.response.posts, function() {
 						// Set a default JsRender template if none was specified
@@ -123,13 +125,18 @@
 						target.append($(template).render(this));
 					});
 
-					// Run completion function if set
+					// Run success function if set
 					if (typeof settings.success === "function") settings.success(data, textStatus, jqXHR);
 				},
 				error: function(jqXHR, textStatus, errorThrown) {
+					// Run error function if set
 					if (typeof settings.error === "function") settings.error(jqXHR, textStatus, errorThrown);
 				},
 				complete: function(jqXHR, textStatus) {
+					// Hide ‘loading’ messages included in markup, if any
+					target.find(".tumblr-api-loading").hide();
+
+					// Run completion function if set
 					if (typeof settings.complete === "function") settings.complete(jqXHR, textStatus);
 				}
 			});
