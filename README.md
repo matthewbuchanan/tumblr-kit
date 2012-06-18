@@ -217,12 +217,12 @@ Use `this` in your callbacks to refer to the container element(s) defined in the
 			<td rowspan="4" valign="top"><code>done</code></td>
 			<td><code>data</code></td>
 			<td>object</td>
-    		<td>The data returned by `getTumblrPosts()`</td>
+    		<td>The data returned by <code>getTumblrPosts()</code></td>
 		</tr>
 		<tr>
 			<td><code>textStatus</code></td>
 			<td>string</td>
-    		<td>The status of the successful ajax call ("success" or "notmodified")</td>
+    		<td>The status of the successful ajax call (<code>"success"</code> or <code>"notmodified"</code>)</td>
 		</tr>
 		<tr>
 			<td><code>jqXHR</code></td>
@@ -243,7 +243,7 @@ Use `this` in your callbacks to refer to the container element(s) defined in the
 		<tr>
 			<td><code>textStatus</code></td>
 			<td>string</td>
-    		<td>The status of the successful ajax call ("success", "notmodified", "error", "timeout", "abort" or "parsererror")</td>
+    		<td>The status of the successful ajax call (<code>"success"</code>, <code>"notmodified"</code>, <code>"error"</code>, <code>"timeout"</code>, <code>"abort"</code> or <code>"parsererror"</code>)</td>
 		</tr>
 		<tr>
 			<td><code>uriWithoutOffset</code></td>
