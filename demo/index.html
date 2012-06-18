@@ -22,7 +22,7 @@
 
 			var TUMBLR_API_KEY = "U41QnbLmjhiKfief3Cd5jZ6fO4ciHwWbrYSCwthlm79rZ0e6aR";
 			var TUMBLR_HOSTNAME = "matthewbuchanan.name";
-			
+
 			// On DOM Ready, perform these actions
 			$(function() {
 
@@ -42,12 +42,15 @@
 
 				$("#all").getTumblrPosts({
 					limit: 10,
-					success: cyclePhotosets
+					done: cyclePhotosets
 				});
 
 				$("#audio").getTumblrPosts({
 					type: "audio",
-					limit: 1
+					limit: 1,
+					done: function(data, textStatus, jqXHR, url) {
+						console.log(url);
+					}
 				});
 
 				$("#chats").getTumblrPosts({
@@ -64,7 +67,7 @@
 					type: "photo",
 					limit: 3,
 					template: "#tmpl-photo",
-					complete: cyclePhotosets
+					done: cyclePhotosets
 				});
 
 				$("#quotes").getTumblrPosts({
@@ -203,7 +206,7 @@
 
 		<script id="tmpl-metadata" type="text/x-jsrender">
 			{{if note_count > 0}}<p><small><a href="{{:post_url}}#notes">{{:note_count}} notes</a></small></p>{{/if}}
-		
+
 			{{if tags}}<ul class="tags">{{for tags tmpl="#tmpl-tag"/}}</ul>{{/if}}
 		</script>
 

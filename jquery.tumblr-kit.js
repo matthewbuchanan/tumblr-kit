@@ -1,5 +1,5 @@
 /*
- * Tumblr Kit 0.9.2 (Initial Public Release)
+ * Tumblr Kit 0.9.3 (Initial Public Release)
  *
  * A jQuery plugin for importing post data from Tumblr’s API.
  * http://github.com/matthewbuchanan/tumblr-kit/
@@ -81,9 +81,8 @@
 			"format": "", // none (for html), text, raw
 			"template": "", // ID of JsRender template
 			"before": null,
-			"success": null,
-			"error": null,
-			"complete": null
+			"done": null, // replaces success() callback, to be deprecated in jQuery 1.8
+			"always": null // replaces complete() callback, to be deprecated in jQuery 1.8
 		}, options);
 
 		var target = this;
@@ -95,14 +94,17 @@
 			var uri = "http://api.tumblr.com/v2/blog/" +
 				settings.hostname + "/posts" +
 				settings.type + "?api_key=" +
-				TUMBLR_API_KEY;
+				TUMBLR_API_KEY,
+				uriWithoutOffset = "";
 
 			// Either request a single post by ID or a set of posts by tag, limit, offset
+			// Retain URI without offset to pass to callback, for use with infinite scroll
 			if (settings.id) {
 				uri += "&id=" + parseInt(settings.id);
 			} else {
 				if (settings.tag) uri += "&tag=" + encodeURI(settings.tag);
 				if (settings.limit) uri += "&limit=" + parseInt(settings.limit);
+				uriWithoutOffset = uri;
 				if (settings.offset) uri += "&offset=" + parseInt(settings.offset);
 			}
 
@@ -111,34 +113,30 @@
 				url: uri,
 				dataType: "jsonp",
 				jsonp: "jsonp",
-				before: function() {
+				ifModified: true,
+				beforeSend: function() {
 					// Run before() function if set, maintaining context for 'this'
 					if (typeof settings.before === "function") settings.before.call(target);
-				},
-				success: function(data, textStatus, jqXHR) {
-					// Process each returned post
-					$.each(data.response.posts, function() {
-						// Set a default JsRender template if none was specified
-						var template = (settings.template != "") ? settings.template : "#tmpl-" + this.type;
-
-						// Render the post contents with the JsRender template
-						target.append($(template).render(this));
-					});
-
-					// Run success() function if set, maintaining context for 'this'
-					if (typeof settings.success === "function") settings.success.call(target, data, textStatus, jqXHR);
-				},
-				error: function(jqXHR, textStatus, errorThrown) {
-					// Run error() function if set, maintaining context for 'this'
-					if (typeof settings.error === "function") settings.error.call(target, jqXHR, textStatus, errorThrown);
-				},
-				complete: function(jqXHR, textStatus) {
-					// Hide ‘loading’ messages included in markup, if any
-					target.find(".tumblr-api-loading").hide();
-
-					// Run complete() function if set, maintaining context for 'this'
-					if (typeof settings.complete === "function") settings.complete.call(target, jqXHR, textStatus);
 				}
+			}).done(function(data, textStatus, jqXHR) {
+				// Process each returned post
+				$.each(data.response.posts, function() {
+
+					// Set a default JsRender template if none was specified
+					var template = (settings.template != "") ? settings.template : "#tmpl-" + this.type;
+
+					// Render the post contents with the JsRender template
+					target.append($(template).render(this));
+				});
+
+				// Run success() function if set, maintaining context for 'this'
+				if (typeof settings.done === "function") settings.done.call(target, data, textStatus, jqXHR, uriWithoutOffset);
+			}).always(function(jqXHR, textStatus) {
+				// Hide ‘loading’ messages included in markup, if any
+				target.find(".tumblr-api-loading").hide();
+
+				// Run complete() function if set, maintaining context for 'this'
+				if (typeof settings.always === "function") settings.always.call(target, jqXHR, textStatus, uriWithoutOffset);
 			});
 		});
 	};

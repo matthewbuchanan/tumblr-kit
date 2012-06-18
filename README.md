@@ -5,7 +5,7 @@ A jQuery framework for ajax loading post content via Tumblr’s v2 API and rende
 
 ## Dependencies
 
-Tumblr Kit requires [jQuery 1.4+](http://jquery.com) and [JsRender 1.0pre+](http://github.com/borismoore/jsrender/).
+Tumblr Kit requires [jQuery 1.5+](http://jquery.com) and [JsRender 1.0pre+](http://github.com/borismoore/jsrender/).
 
 ## Setup
 
@@ -118,80 +118,147 @@ The `getTumblrPosts()` function takes several settings parameters (all optional)
 			<td><code>hostname</code></td>
 			<td>string</td>
 			<td>TUMBLR_HOSTNAME</td>
-    	<td>Eg. "matthewb.tumblr.com", "matthewbuchanan.name"</td>
+    		<td>Eg. "matthewb.tumblr.com", "matthewbuchanan.name"</td>
 		</tr>
 		<tr>
 			<td><code>id</code></td>
 			<td>integer</td>
 			<td>null</td>
-    	<td>The ID of a particular Tumblr post</td>
+    		<td>The ID of a particular Tumblr post</td>
 		</tr>
 		<tr>
 			<td><code>type</code></td>
 			<td>string</td>
 			<td></td>
-    	<td>"answer", "audio", "chat", "link", "photo", "quote", "text" or "video"</td>
+    		<td>"answer", "audio", "chat", "link", "photo", "quote", "text" or "video"</td>
 		</tr>
 		<tr>
 			<td><code>tag</code></td>
 			<td>string</td>
 			<td></td>
-    	<td>Eg. "sports", "tech" or "design"</td>
+    		<td>Eg. "sports", "tech" or "design"</td>
 		</tr>
 		<tr>
 			<td><code>limit</code></td>
 			<td>integer</td>
 			<td>20</td>
-    	<td>The number of posts to load (1 – 20)</td>
+    		<td>The number of posts to load (1 – 20)</td>
 		</tr>
 		<tr>
 			<td><code>offset</code></td>
 			<td>integer</td>
 			<td>0</td>
-    	<td>The starting index of the first post, useful for implementing pagination</td>
+    		<td>The starting index of the first post, useful for implementing pagination</td>
 		</tr>
 		<tr>
 			<td><code>format</code></td>
 			<td>string</td>
 			<td></td>
-    	<td>Empty string (for HTML), "text" or "raw"</td>
+    		<td>Empty string (for HTML), "text" or "raw"</td>
 		</tr>
 		<tr>
 			<td><code>template</code></td>
 			<td>string</td>
 			<td></td>
-    	<td>The ID of the JsRender template to use, eg. "#myTemplate"</td>
+    		<td>The ID of the JsRender template to use, eg. "#myTemplate"</td>
 		</tr>
 		<tr>
 			<td><code>before</code></td>
 			<td>function</td>
 			<td>null</td>
-    	<td>Function to run prior to data retrieval</td>
+    		<td>Function to run prior to data retrieval</td>
 		</tr>
 		<tr>
-			<td><code>success</code></td>
+			<td><code><del>success</del></code></td>
 			<td>function</td>
 			<td>null</td>
-    	<td>Function to run upon successful data retrieval</td>
+    		<td>Removed, use <code>done</code> callback instead</td>
 		</tr>
 		<tr>
-			<td><code>error</code></td>
+			<td><code><del>error</del></code></td>
 			<td>function</td>
 			<td>null</td>
-    	<td>Function to run upon unsuccessful data retrieval</td>
+    		<td>Removed (redundant with JSONP)</td>
 		</tr>
 		<tr>
-			<td><code>complete</code></td>
+			<td><code><del>complete</del></code></td>
 			<td>function</td>
 			<td>null</td>
-    	<td>Function to run following execution of <code>success</code> and <code>error</code> callbacks</td>
+    		<td>Removed, use <code>always</code> callback instead</td>
+		</tr>
+		<tr>
+			<td><code>done</code></td>
+			<td>function</td>
+			<td>null</td>
+    		<td>Function to run upon successful data retrieval</td>
+		</tr>
+		<tr>
+			<td><code>always</code></td>
+			<td>function</td>
+			<td>null</td>
+    		<td>Function to run following completion of data retrieval (successful or not)</td>
 		</tr>
 	</tbody>
 </table>
 
-Use `this` in your callbacks to refer to the container element(s) defined in the jQuery selector used with `.getTumblrPosts()`. The `success`, `error`	 and `complete` callbacks are modelled on those defined in jQuery’s [`$.ajax()` function](http://api.jquery.com/jQuery.ajax/), and implement the same arguments in each case.
+Use `this` in your callbacks to refer to the container element(s) defined in the jQuery selector used with `.getTumblrPosts()`. The `done` and `always` callbacks follow jQuery’s [deferred objects](http://api.jquery.com/category/deferred-object/) pattern, and implement the following arguments:
+
+<table>
+	<thead>
+		<tr>
+			<th>Callback</th>
+			<th>Parameter</th>
+			<th>Type</th>
+			<th>Description</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td rowspan="4" valign="top"><code>done</code></td>
+			<td><code>data</code></td>
+			<td>object</td>
+    		<td>The data returned by `getTumblrPosts()`</td>
+		</tr>
+		<tr>
+			<td><code>textStatus</code></td>
+			<td>string</td>
+    		<td>The status of the successful ajax call ("success" or "notmodified")</td>
+		</tr>
+		<tr>
+			<td><code>jqXHR</code></td>
+			<td>object</td>
+    		<td>The jqXHR object used in the ajax call</td>
+		</tr>
+		<tr>
+			<td><code>uriWithoutOffset</code></td>
+			<td>string</td>
+    		<td>The URL used by the ajax call, minus the offset parameter (if applicable)</td>
+		</tr>
+		<tr>
+			<td rowspan="3" valign="top"><code>always</code></td>
+			<td><code>jqXHR</code></td>
+			<td>object</td>
+    		<td>The jqXHR object used in the ajax call</td>
+		</tr>
+		<tr>
+			<td><code>textStatus</code></td>
+			<td>string</td>
+    		<td>The status of the successful ajax call ("success", "notmodified", "error", "timeout", "abort" or "parsererror")</td>
+		</tr>
+		<tr>
+			<td><code>uriWithoutOffset</code></td>
+			<td>string</td>
+    		<td>The URL used by the ajax call, minus the offset parameter (if applicable)</td>
+		</tr>
+	</tbody>
+</table>
 
 ## Version history
+
+**0.9.3**
+- Switched callbacks to use the deferred object model (`done()`, `always()`).
+- Removed `error()` callback as it was redundant with JSONP.
+- Added URL parameter to callbacks for use with infinite scroll.
 
 **0.9.2**
 - Correctly pass the context for `this` to callback functions.
