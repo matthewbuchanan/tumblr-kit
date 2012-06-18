@@ -118,7 +118,7 @@ The `getTumblrPosts()` function takes several settings parameters (all optional)
 			<td><code>hostname</code></td>
 			<td>string</td>
 			<td>TUMBLR_HOSTNAME</td>
-    		<td>Eg. "matthewb.tumblr.com", "matthewbuchanan.name"</td>
+    		<td>Eg. <code>"matthewb.tumblr.com"</code>, <code>"matthewbuchanan.name"</code></td>
 		</tr>
 		<tr>
 			<td><code>id</code></td>
@@ -130,19 +130,19 @@ The `getTumblrPosts()` function takes several settings parameters (all optional)
 			<td><code>type</code></td>
 			<td>string</td>
 			<td></td>
-    		<td>"answer", "audio", "chat", "link", "photo", "quote", "text" or "video"</td>
+    		<td><code>"answer"</code>, <code>"audio"</code>, <code>"chat"</code>, <code>"link"</code>, <code>"photo"</code>, <code>"quote"</code>, <code>"text"</code> or <code>"video"</code></td>
 		</tr>
 		<tr>
 			<td><code>tag</code></td>
 			<td>string</td>
 			<td></td>
-    		<td>Eg. "sports", "tech" or "design"</td>
+    		<td>Eg. <code>"sports"</code>, <code>"tech"</code> or <code>"design"</code></td>
 		</tr>
 		<tr>
 			<td><code>limit</code></td>
 			<td>integer</td>
 			<td>20</td>
-    		<td>The number of posts to load (1 – 20)</td>
+    		<td>The number of posts to load (<code>1 – 20</code>)</td>
 		</tr>
 		<tr>
 			<td><code>offset</code></td>
@@ -154,13 +154,13 @@ The `getTumblrPosts()` function takes several settings parameters (all optional)
 			<td><code>format</code></td>
 			<td>string</td>
 			<td></td>
-    		<td>Empty string (for HTML), "text" or "raw"</td>
+    		<td>Empty string (for HTML), <code>"text"</code> or <code>"raw"</code></td>
 		</tr>
 		<tr>
 			<td><code>template</code></td>
 			<td>string</td>
 			<td></td>
-    		<td>The ID of the JsRender template to use, eg. "#myTemplate"</td>
+    		<td>The ID of the JsRender template to use, eg. <code>"#myTemplate"</code></td>
 		</tr>
 		<tr>
 			<td><code>before</code></td>
