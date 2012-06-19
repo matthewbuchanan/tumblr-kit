@@ -9,6 +9,7 @@ Note that by its nature this particular example probably loads the same post int
 
 ### Audio post
 
+```javascript
 	<script id="tmpl-audio" type="text/x-jsrender">
 		<article id="post-{{:id}}" class="post-{{:type}}">
 			{{if track_name || artist || album}}
@@ -25,9 +26,11 @@ Note that by its nature this particular example probably loads the same post int
 			{{for #data tmpl="#tmpl-metadata"/}}
 		</article>
 	</script>
+```
 
 ### Chat post
 
+```javascript
 	<script id="tmpl-chat" type="text/x-jsrender">
 		<article id="post-{{:id}}" class="post-{{:type}}">
 			<h1>{{:title}}</h1>
@@ -39,9 +42,11 @@ Note that by its nature this particular example probably loads the same post int
 			{{for #data tmpl="#tmpl-metadata"/}}
 		</article>
 	</script>
+```
 
 ### Link post
 
+```javascript
 	<script id="tmpl-link" type="text/x-jsrender">
 		<article id="post-{{:id}}" class="post-{{:type}}">
 			<h1><a href="{{:url}}">{{:title}}</a></h1>
@@ -49,9 +54,11 @@ Note that by its nature this particular example probably loads the same post int
 			{{for #data tmpl="#tmpl-metadata"/}}
 		</article>
 	</script>
+```
 
 ### Photo / Photoset post
 
+```javascript
 	<script id="tmpl-photo" type="text/x-jsrender">
 		<article id="post-{{:id}}" class="post-{{:type}}">
 			{{if photoset_layout}}
@@ -65,9 +72,11 @@ Note that by its nature this particular example probably loads the same post int
 			{{for #data tmpl="#tmpl-metadata"/}}
 		</article>
 	</script>
+```
 
 ### Quote post
 
+```javascript
 	<script id="tmpl-quote" type="text/x-jsrender">
 		<article id="post-{{:id}}" class="post-{{:type}}">
 			<h1>{{:text}}</h1>
@@ -75,9 +84,11 @@ Note that by its nature this particular example probably loads the same post int
 			{{for #data tmpl="#tmpl-metadata"/}}
 		</article>
 	</script>
+```
 
 ### Text post
 
+```javascript
 	<script id="tmpl-text" type="text/x-jsrender">
 		<article id="post-{{:id}}" class="post-{{:type}}">
 			<h1>{{:title}}</h1>
@@ -85,19 +96,23 @@ Note that by its nature this particular example probably loads the same post int
 			{{for #data tmpl="#tmpl-metadata"/}}
 		</article>
 	</script>
+```
 
 ### Video post
 
-	 <script id="tmpl-video" type="text/x-jsrender">
+```javascript
+	<script id="tmpl-video" type="text/x-jsrender">
 		<article id="post-{{:id}}" class="post-{{:type}}">
 			{{:~getVideoEmbed(#view, 500)}}
 			{{:caption}}
 			{{for #data tmpl="#tmpl-metadata"/}}
 		</article>
 	</script>
+```
 
 ### Metadata / Tag templates
 
+```javascript
 	<script id="tmpl-metadata" type="text/x-jsrender">
 		{{if note_count > 0}}<p><small><a href="{{:post_url}}#notes">{{:note_count}} notes</a></small></p>{{/if}}
 		{{if tags}}<ul class="tags">{{for tags tmpl="#tmpl-tag"/}}</ul>{{/if}}
@@ -106,3 +121,4 @@ Note that by its nature this particular example probably loads the same post int
 	<script id="tmpl-tag" type="text/x-jsrender">
 		<li><a href="http://{{:~getHostname()}}/tagged/{{:#data}}">{{:#data}}</a></li>
 	</script>
+```
