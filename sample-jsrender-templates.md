@@ -5,7 +5,7 @@ The sample templates in this file use Boris Moore’s JsRender templating syntax
 
 These templates should be treated as a starting point only. Modify them to match the markup in your theme, and refer to Tumblr’s [API documentation](http://www.tumblr.com/docs/en/api/v2#text-posts) for details of the exposed object hierarchy for each post type.
 
-Note that by its nature this particular example probably loads the same post into multiple containers, thereby making the IDs on each post non-unique. Avoid doing this if you want to make use of those for any reason.
+Note that by its nature the [demo](http://dropbox.com/u/25640/tumblr-kit/demo/index.html) probably loads the same post into multiple containers, thereby making the post IDs non-unique. Avoid doing this if you want to make use of those for any reason.
 
 ### Audio post
 
