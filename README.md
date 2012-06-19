@@ -11,14 +11,14 @@ Tumblr Kit requires [jQuery 1.5+](http://jquery.com) and [JsRender 1.0pre+](http
 
 Include the dependent frameworks listed above:
 
-```javascript
+```html
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script src="http://borismoore.github.com/jsrender/jsrender.js"></script>
 ```
 
 Declare global variables for your Tumblr OAuth Consumer Key ([register one here](http://www.tumblr.com/oauth/apps)) and your blog’s hostname:
 
-```javascript
+```html
 	<script>
 		var TUMBLR_API_KEY = "U41Qn………0e6aR";
 		var TUMBLR_HOSTNAME = "matthewb.tumblr.com";
@@ -31,7 +31,7 @@ Replace the values above with your own details.
 
 If you’re including Tumblr Kit in a public theme, you’ll need to have your users generate their own key, which isn’t ideal. I believe Tumblr is looking at a solution to make this easier for theme authors, but for now you’ll need to provide a [custom text](http://www.tumblr.com/docs/en/custom_themes#appearance-options) tag for the Consumer Key and output the blog’s hostname using the undocumented `{Host}` tag:
 
-```javascript
+```html
 	<meta name="text:Tumblr OAuth Consumer Key" content=""/>
 
 	var TUMBLR_API_KEY = "{text:Tumblr OAuth Consumer Key}";
@@ -44,7 +44,7 @@ Tumblr Kit uses [JsRender](http://github.com/borismoore/jsrender) templates to d
 
 Include a JsRender template in your HTML page for each post type you intend to import. For example, the template for a text post might look like this:
 
-```javascript
+```html
 	<script id="tmpl-text" type="text/x-jsrender">
 		<article id="post-{{:id}}" class="post-{{:type}}">
 			<h1>{{:title}}</h1>
