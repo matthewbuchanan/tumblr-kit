@@ -9,7 +9,7 @@ Note that by its nature this particular example probably loads the same post int
 
 ### Audio post
 
-```javascript
+```html
 	<script id="tmpl-audio" type="text/x-jsrender">
 		<article id="post-{{:id}}" class="post-{{:type}}">
 			{{if track_name || artist || album}}
@@ -30,7 +30,7 @@ Note that by its nature this particular example probably loads the same post int
 
 ### Chat post
 
-```javascript
+```html
 	<script id="tmpl-chat" type="text/x-jsrender">
 		<article id="post-{{:id}}" class="post-{{:type}}">
 			<h1>{{:title}}</h1>
@@ -46,7 +46,7 @@ Note that by its nature this particular example probably loads the same post int
 
 ### Link post
 
-```javascript
+```html
 	<script id="tmpl-link" type="text/x-jsrender">
 		<article id="post-{{:id}}" class="post-{{:type}}">
 			<h1><a href="{{:url}}">{{:title}}</a></h1>
@@ -58,7 +58,7 @@ Note that by its nature this particular example probably loads the same post int
 
 ### Photo / Photoset post
 
-```javascript
+```html
 	<script id="tmpl-photo" type="text/x-jsrender">
 		<article id="post-{{:id}}" class="post-{{:type}}">
 			{{if photoset_layout}}
@@ -76,7 +76,7 @@ Note that by its nature this particular example probably loads the same post int
 
 ### Quote post
 
-```javascript
+```html
 	<script id="tmpl-quote" type="text/x-jsrender">
 		<article id="post-{{:id}}" class="post-{{:type}}">
 			<h1>{{:text}}</h1>
@@ -88,7 +88,7 @@ Note that by its nature this particular example probably loads the same post int
 
 ### Text post
 
-```javascript
+```html
 	<script id="tmpl-text" type="text/x-jsrender">
 		<article id="post-{{:id}}" class="post-{{:type}}">
 			<h1>{{:title}}</h1>
@@ -100,7 +100,7 @@ Note that by its nature this particular example probably loads the same post int
 
 ### Video post
 
-```javascript
+```html
 	<script id="tmpl-video" type="text/x-jsrender">
 		<article id="post-{{:id}}" class="post-{{:type}}">
 			{{:~getVideoEmbed(#view, 500)}}
@@ -112,7 +112,7 @@ Note that by its nature this particular example probably loads the same post int
 
 ### Metadata / Tag templates
 
-```javascript
+```html
 	<script id="tmpl-metadata" type="text/x-jsrender">
 		{{if note_count > 0}}<p><small><a href="{{:post_url}}#notes">{{:note_count}} notes</a></small></p>{{/if}}
 		{{if tags}}<ul class="tags">{{for tags tmpl="#tmpl-tag"/}}</ul>{{/if}}
