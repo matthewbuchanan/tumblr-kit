@@ -71,27 +71,27 @@ JsRender provides a mechanism for registering helper functions to assist with th
 		<tr>
 			<td><code>getHostname()</code></td>
 			<td></td>
-    	<td>Returns the blog hostname as declared in the TUMBLR_HOSTNAME global variable.</td>
+			<td>Returns the blog hostname as declared in the TUMBLR_HOSTNAME global variable.</td>
 		</tr>
 		<tr>
 			<td><code>getTintedAudioPlayer(view[, color])</code></td>
 			<td>audio</td>
-    	<td>Returns the embed code for the Flash audio player, optionally tinted with the specified hex `color` value.</td>
+		    	<td>Returns the embed code for the Flash audio player, optionally tinted with the specified hex <code>color</code> value.</td>
 		</tr>
 		<tr>
 			<td><code>getPhotoURL(view, size)</code></td>
 			<td>photo</td>
-    	<td>Returns the best image URL from available photo sizes based on the specified `size` parameter.</td>
+		    	<td>Returns the best image URL from available photo sizes based on the specified <code>size</code> parameter.</td>
 		</tr>
 		<tr>
 			<td><code>getPhotoOrientation(view)</code></td>
 			<td>photo</td>
-    	<td>Returns the image’s aspect ratio as <code>"portrait"</code>, <code>"landscape"</code> or <code>"square"</code>.</td>
+		    	<td>Returns the image’s aspect ratio as <code>"portrait"</code>, <code>"landscape"</code> or <code>"square"</code>.</td>
 		</tr>
 		<tr>
 			<td><code>getVideoEmbed(view, size)</code></td>
 			<td>video</td>
-    	<td>Returns the best embed code from available video sizes based on the specified <code>size</code> parameter.</td>
+		    	<td>Returns the best embed code from available video sizes based on the specified <code>size</code> parameter.</td>
 		</tr>
 	</tbody>
 </table>
@@ -170,7 +170,7 @@ The `getTumblrPosts()` function takes several settings parameters (all optional)
 			<td><code>template</code></td>
 			<td>string</td>
 			<td></td>
-	    		<td>The ID of the JsRender template to use, eg. <code>"#myTemplate"</code></td>
+	    		<td>The ID of the JsRender template to use for all returned posts, eg. <code>"#myTemplate"</code></td>
 		</tr>
 		<tr>
 			<td><code>before</code></td>
