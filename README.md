@@ -25,7 +25,7 @@ Declare global variables for your Tumblr OAuth Consumer Key ([register one here]
 	</script>
 ```
 
-Replace the values above with your own details.
+Replace the values above with your own credentials.
 
 ### Use in public themes
 
