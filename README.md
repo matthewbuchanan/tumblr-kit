@@ -11,15 +11,19 @@ Tumblr Kit requires [jQuery 1.5+](http://jquery.com) and [JsRender 1.0pre+](http
 
 Include the dependent frameworks listed above:
 
+```javascript
 	<script src="http://code.jquery.com/jquery.js"></script>
 	<script src="http://borismoore.github.com/jsrender/jsrender.js"></script>
+```
 
 Declare global variables for your Tumblr OAuth Consumer Key ([register one here](http://www.tumblr.com/oauth/apps)) and your blog’s hostname:
 
+```javascript
 	<script>
 		var TUMBLR_API_KEY = "U41Qn………0e6aR";
 		var TUMBLR_HOSTNAME = "matthewb.tumblr.com";
 	</script>
+```
 
 Replace the values above with your own details.
 
@@ -27,10 +31,12 @@ Replace the values above with your own details.
 
 If you’re including Tumblr Kit in a public theme, you’ll need to have your users generate their own key, which isn’t ideal. I believe Tumblr is looking at a solution to make this easier for theme authors, but for now you’ll need to provide a [custom text](http://www.tumblr.com/docs/en/custom_themes#appearance-options) tag for the Consumer Key and output the blog’s hostname using the undocumented `{Host}` tag:
 
+```javascript
 	<meta name="text:Tumblr OAuth Consumer Key" content=""/>
 
 	var TUMBLR_API_KEY = "{text:Tumblr OAuth Consumer Key}";
 	var TUMBLR_HOSTNAME = "{Host}";
+```
 
 ## Post templates
 
@@ -38,12 +44,14 @@ Tumblr Kit uses [JsRender](http://github.com/borismoore/jsrender) templates to d
 
 Include a JsRender template in your HTML page for each post type you intend to import. For example, the template for a text post might look like this:
 
+```javascript
 	<script id="tmpl-text" type="text/x-jsrender">
 		<article id="post-{{:id}}" class="post-{{:type}}">
 			<h1>{{:title}}</h1>
 			{{:body}}
 		</article>
 	</script>
+```
 
 Tumblr’s [API documentation](http://www.tumblr.com/docs/en/api/v2#text-posts) provides a JSON schema for each post type that will help you to define your templates.
 
@@ -94,7 +102,9 @@ JsRender provides a mechanism for registering helper functions to assist with th
 
 With your globals and templates declared, importing post data is easy. Tumblr Kit provides a single function to import posts, `getTumblrPosts()`, which is called on a jQuery selector, like this:
 
+```javascript
 	$("#posts").getTumblrPosts();
+```
 
 By default, this loads the 20 most recent posts from the target blog and renders them inside the `#posts` element using the JsRender templates defined in your page. When no template ID is specified in the options, the default template naming scheme is expected: `#tmpl-audio`, `#tmpl-chat`, etc.
 
@@ -118,85 +128,85 @@ The `getTumblrPosts()` function takes several settings parameters (all optional)
 			<td><code>hostname</code></td>
 			<td>string</td>
 			<td>TUMBLR_HOSTNAME</td>
-    		<td>Eg. <code>"matthewb.tumblr.com"</code>, <code>"matthewbuchanan.name"</code></td>
+			<td>Eg. <code>"matthewb.tumblr.com"</code>, <code>"matthewbuchanan.name"</code></td>
 		</tr>
 		<tr>
 			<td><code>id</code></td>
 			<td>integer</td>
 			<td>null</td>
-    		<td>The ID of a particular Tumblr post</td>
+			<td>The ID of a particular Tumblr post</td>
 		</tr>
 		<tr>
 			<td><code>type</code></td>
 			<td>string</td>
 			<td></td>
-    		<td><code>"answer"</code>, <code>"audio"</code>, <code>"chat"</code>, <code>"link"</code>, <code>"photo"</code>, <code>"quote"</code>, <code>"text"</code> or <code>"video"</code></td>
+			<td><code>"answer"</code>, <code>"audio"</code>, <code>"chat"</code>, <code>"link"</code>, <code>"photo"</code>, <code>"quote"</code>, <code>"text"</code> or <code>"video"</code></td>
 		</tr>
 		<tr>
 			<td><code>tag</code></td>
 			<td>string</td>
 			<td></td>
-    		<td>Eg. <code>"sports"</code>, <code>"tech"</code> or <code>"design"</code></td>
+			<td>Eg. <code>"sports"</code>, <code>"tech"</code> or <code>"design"</code></td>
 		</tr>
 		<tr>
 			<td><code>limit</code></td>
 			<td>integer</td>
 			<td>20</td>
-    		<td>The number of posts to load (<code>1 – 20</code>)</td>
+			<td>The number of posts to load (<code>1 – 20</code>)</td>
 		</tr>
 		<tr>
 			<td><code>offset</code></td>
 			<td>integer</td>
 			<td>0</td>
-    		<td>The starting index of the first post, useful for implementing pagination</td>
+			<td>The starting index of the first post, useful for implementing pagination</td>
 		</tr>
 		<tr>
 			<td><code>format</code></td>
 			<td>string</td>
 			<td></td>
-    		<td>Empty string (for HTML), <code>"text"</code> or <code>"raw"</code></td>
+	    		<td>Empty string (for HTML), <code>"text"</code> or <code>"raw"</code></td>
 		</tr>
 		<tr>
 			<td><code>template</code></td>
 			<td>string</td>
 			<td></td>
-    		<td>The ID of the JsRender template to use, eg. <code>"#myTemplate"</code></td>
+	    		<td>The ID of the JsRender template to use, eg. <code>"#myTemplate"</code></td>
 		</tr>
 		<tr>
 			<td><code>before</code></td>
 			<td>function</td>
 			<td>null</td>
-    		<td>Function to run prior to data retrieval</td>
+	    		<td>Function to run prior to data retrieval</td>
 		</tr>
 		<tr>
 			<td><code><del>success</del></code></td>
 			<td>function</td>
 			<td>null</td>
-    		<td>Removed, use <code>done</code> callback instead</td>
+	    		<td>Removed, use <code>done</code> callback instead</td>
 		</tr>
 		<tr>
 			<td><code><del>error</del></code></td>
 			<td>function</td>
 			<td>null</td>
-    		<td>Removed (redundant with JSONP)</td>
+	    		<td>Removed (redundant with JSONP)</td>
 		</tr>
 		<tr>
 			<td><code><del>complete</del></code></td>
 			<td>function</td>
 			<td>null</td>
-    		<td>Removed, use <code>always</code> callback instead</td>
+	    		<td>Removed, use <code>always</code> callback instead</td>
 		</tr>
 		<tr>
 			<td><code>done</code></td>
 			<td>function</td>
 			<td>null</td>
-    		<td>Function to run upon successful data retrieval</td>
+	    		<td>Function to run upon successful data retrieval</td>
 		</tr>
 		<tr>
 			<td><code>always</code></td>
 			<td>function</td>
 			<td>null</td>
-    		<td>Function to run following completion of data retrieval (successful or not)</td>
+	    		<td>Function to run following completion of data retrieval (successful or not)</td>
 		</tr>
 	</tbody>
 </table>
@@ -217,38 +227,38 @@ Use `this` in your callbacks to refer to the container element(s) defined in the
 			<td rowspan="4" valign="top"><code>done</code></td>
 			<td><code>data</code></td>
 			<td>object</td>
-    		<td>The data returned by <code>getTumblrPosts()</code></td>
+	    		<td>The data returned by <code>getTumblrPosts()</code></td>
 		</tr>
 		<tr>
 			<td><code>textStatus</code></td>
 			<td>string</td>
-    		<td>The status of the successful ajax call (<code>"success"</code> or <code>"notmodified"</code>)</td>
+	    		<td>The status of the successful ajax call (<code>"success"</code> or <code>"notmodified"</code>)</td>
 		</tr>
 		<tr>
 			<td><code>jqXHR</code></td>
 			<td>object</td>
-    		<td>The jqXHR object used in the ajax call</td>
+	    		<td>The jqXHR object used in the ajax call</td>
 		</tr>
 		<tr>
 			<td><code>uriWithoutOffset</code></td>
 			<td>string</td>
-    		<td>The URL used by the ajax call, minus the offset parameter (if applicable)</td>
+	    		<td>The URL used by the ajax call, minus the offset parameter (if applicable)</td>
 		</tr>
 		<tr>
 			<td rowspan="3" valign="top"><code>always</code></td>
 			<td><code>jqXHR</code></td>
 			<td>object</td>
-    		<td>The jqXHR object used in the ajax call</td>
+	    		<td>The jqXHR object used in the ajax call</td>
 		</tr>
 		<tr>
 			<td><code>textStatus</code></td>
 			<td>string</td>
-    		<td>The status of the successful ajax call (<code>"success"</code>, <code>"notmodified"</code>, <code>"error"</code>, <code>"timeout"</code>, <code>"abort"</code> or <code>"parsererror"</code>)</td>
+	    		<td>The status of the successful ajax call (<code>"success"</code>, <code>"notmodified"</code>, <code>"error"</code>, <code>"timeout"</code>, <code>"abort"</code> or <code>"parsererror"</code>)</td>
 		</tr>
 		<tr>
 			<td><code>uriWithoutOffset</code></td>
 			<td>string</td>
-    		<td>The URL used by the ajax call, minus the offset parameter (if applicable)</td>
+	    		<td>The URL used by the ajax call, minus the offset parameter (if applicable)</td>
 		</tr>
 	</tbody>
 </table>
