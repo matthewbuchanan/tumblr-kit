@@ -1,7 +1,7 @@
 Tumblr Kit
 ==========
 
-A jQuery framework for ajax loading post content via Tumblr’s v2 API and rendering it in your document using customisable JsRender templates. See the [demo](http://dl.dropbox.com/u/25640/tumblr-kit/demo/index.html).
+A jQuery framework for ajax loading post content via Tumblr’s v2 API and rendering it in your document using customisable JsRender templates. See the [demo](http://dropbox.com/u/25640/tumblr-kit/demo/index.html).
 
 ## Dependencies
 
