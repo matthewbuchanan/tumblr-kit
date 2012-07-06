@@ -173,7 +173,7 @@ The `getTumblrPosts()` function takes several settings parameters (all optional)
 	    		<td>The ID of the JsRender template to use for all returned posts, eg. <code>"#myTemplate"</code></td>
 		</tr>
 		<tr>
-			<td><code>before</code></td>
+			<td><code>beforeSend</code></td>
 			<td>function</td>
 			<td>null</td>
 	    		<td>Function to run prior to data retrieval</td>
