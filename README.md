@@ -267,7 +267,7 @@ Use `this` in your callbacks to refer to the container element(s) defined in the
 
 **0.9.3**
 - Switched callbacks to use the deferred object model (`done()`, `always()`).
-- Removed `error()` callback as it was redundant with JSONP.
+- Removed `error()` callback as it is redundant with JSONP.
 - Added URL parameter to callbacks for use with infinite scroll.
 
 **0.9.2**
