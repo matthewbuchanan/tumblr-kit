@@ -17,6 +17,10 @@
 
 		<script>
 
+			/*Browser detection patch*/
+			$.browser = {};
+			$.browser.msie = /msie/.test(navigator.userAgent.toLowerCase());
+
 			// PLEASE REGISTER YOUR OWN TUMBLR OAUTH CONSUMER (API) KEY
 			// http://www.tumblr.com/oauth/apps
 
@@ -49,7 +53,12 @@
 					type: "audio",
 					limit: 1,
 					done: function(data, textStatus, jqXHR, url) {
-						console.log(url);
+						if(typeof console !== "undefined") {
+							console.log(data);
+							console.log(textStatus);
+							console.log(jqXHR);
+							console.log(url);
+						}
 					}
 				});
 

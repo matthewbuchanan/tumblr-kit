@@ -120,14 +120,16 @@
 				}
 			}).done(function(data, textStatus, jqXHR) {
 				// Process each returned post
-				$.each(data.response.posts, function() {
+				if (typeof data !== "undefined" && typeof data.response !== "undefined" > data.response.total_posts > 0) {
+					$.each(data.response.posts, function() {
 
-					// Set a default JsRender template if none was specified
-					var template = (settings.template != "") ? settings.template : "#tmpl-" + this.type;
-
-					// Render the post contents with the JsRender template
-					target.append($(template).render(this));
-				});
+						// Set a default JsRender template if none was specified
+						var template = (settings.template != "") ? settings.template : "#tmpl-" + this.type;
+						
+						// Render the post contents with the JsRender template
+						target.append($(template).render(this));
+					});
+				}
 
 				// Run success() function if set, maintaining context for 'this'
 				if (typeof settings.done === "function") settings.done.call(target, data, textStatus, jqXHR, uriWithoutOffset);
