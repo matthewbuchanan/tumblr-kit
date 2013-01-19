@@ -55,7 +55,7 @@ Include a JsRender template in your HTML page for each post type you intend to i
 
 Tumblr’s [API documentation](http://www.tumblr.com/docs/en/api/v2#text-posts) provides a JSON schema for each post type that will help you to define your templates.
 
-Note: you’ll need to put your jsRender templates into an external file if you plan to use Tumblr Kit on a Tumblr-based site. If you leave them in the page (as in the demo), Tumblr’s tag parser will attempt to process some of the jsRender blocks, as they use a similar syntax to its own custom tags.
+Note: you’ll need to put your JsRender templates into an external file if you plan to use Tumblr Kit on a Tumblr-based site. If you leave them in the page (as in the demo), Tumblr’s tag parser will attempt to process some of the JsRender blocks, as they use a similar syntax to its own custom tags.
 
 ### JsRender Helpers
 
