@@ -267,6 +267,12 @@ Use `this` in your callbacks to refer to the container element(s) defined in the
 
 ## Version history
 
+**0.9.5**
+- Switch to protocol-agnostic API fetching.
+
+**0.9.4**
+- Initial public release.
+
 **0.9.3**
 - Switched callbacks to use the deferred object model (`done()`, `always()`).
 - Removed `error()` callback as it is redundant with JSONP.
