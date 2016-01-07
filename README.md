@@ -1,7 +1,7 @@
 Tumblr Kit
 ==========
 
-A jQuery framework for ajax loading post content via Tumblr’s v2 API and rendering it in your document using customisable JsRender templates. See the [demo](http://dropbox.com/u/25640/tumblr-kit/demo/index.html).
+A jQuery framework for ajax loading post content via Tumblr’s v2 API and rendering it in your document using customisable JsRender templates. Requires a Tumblr OAuth Consumer Key. See the [demo](https://dl.dropboxusercontent.com/u/25640/tumblr-kit/demo/index.html).
 
 ## Dependencies
 
@@ -54,6 +54,8 @@ Include a JsRender template in your HTML page for each post type you intend to i
 ```
 
 Tumblr’s [API documentation](http://www.tumblr.com/docs/en/api/v2#text-posts) provides a JSON schema for each post type that will help you to define your templates.
+
+Note: you’ll need to put your JsRender templates into an external file if you plan to use Tumblr Kit on a Tumblr-based site. If you leave them in the page (as in the demo), Tumblr’s tag parser will attempt to process some of the JsRender blocks, as they use a similar syntax to its own custom tags.
 
 ### JsRender Helpers
 
