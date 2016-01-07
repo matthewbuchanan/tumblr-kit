@@ -91,7 +91,7 @@
 			// Construct URL to call API based on settings
 			if (settings.type != "") settings.type = "/" + settings.type;
 
-			var uri = "http://api.tumblr.com/v2/blog/" +
+			var uri = "//api.tumblr.com/v2/blog/" +
 				settings.hostname + "/posts" +
 				settings.type + "?api_key=" +
 				TUMBLR_API_KEY,
